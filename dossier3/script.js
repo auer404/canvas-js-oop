@@ -21,9 +21,6 @@ function resizeCanvas() {
     canvas.height = window.innerHeight;
 }
 
-resizeCanvas();
-window.onresize = resizeCanvas;
-
 ////////////////// GESTION GAME
 
 const game = new Game(canvas);
@@ -42,3 +39,5 @@ function redraw() {
     // game.draw(); // Tout ce que game doit afficher
 
 }
+
+alert("Version modifiée");
