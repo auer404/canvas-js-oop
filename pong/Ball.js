@@ -10,8 +10,8 @@ class Ball {
     speed;
     size;
     color;
-    direction_x;
-    direction_y;
+    #direction_x; // "#" indique que cette propriété est privée : seul l'objet qui la possède peut la modifier directement
+    #direction_y; // idem
 
     // Le constructeur de notre classe = une fonction appelée dès qu'on instancie notre classe (qu'on en créée un "exemplaire" via new Ball() )
     constructor(canvas, new_x, new_y, new_speed, new_size, new_color, new_dir_x, new_dir_y) {
@@ -24,8 +24,8 @@ class Ball {
         this.speed = new_speed;
         this.size = new_size;
         this.color = new_color;
-        this.direction_x = new_dir_x;
-        this.direction_y = new_dir_y;
+        this.#direction_x = new_dir_x;
+        this.#direction_y = new_dir_y;
 
         // Note : "this" fera référence à l'instance qu'on est en train de créer
         // On l'utilise pour atteindre les propriétés (ici et dans toutes les méthodes)
@@ -33,29 +33,25 @@ class Ball {
 
     // Les méthodes de notre classe = des fonctions qui lui "appartiennent"
 
-    check_rebound() { // Gestion des directions (cas de rebonds)
-
-        // On peut "surnommer" des expressions booléennes, pour les tester ensuite
-        const bottom_collision = (this.position_y >= canvas.height - this.size / 2);
-        const top_collision = (this.position_y <= 0 + this.size / 2);
-        const right_collision = (this.position_x >= canvas.width - this.size / 2);
-        const left_collision = (this.position_x <= 0 + this.size / 2);
-
-        if (left_collision || right_collision) {
-            this.direction_x *= -1;
-        }
-
-        if (bottom_collision || top_collision) {
-            this.direction_y *= -1;
-        }
-
+    move() { // Gestion du mouvement (Màj coordonnées)
+        this.position_x += this.speed * this.#direction_x;
+        this.position_y += this.speed * this.#direction_y;
     }
 
-    move() { // Gestion du mouvement (Màj coordonnées)
+    bounce_to_top() {
+        this.#direction_y = -1;
+    }
 
-        this.check_rebound();
-        this.position_x += this.speed * this.direction_x;
-        this.position_y += this.speed * this.direction_y;
+    bounce_to_bottom() {
+        this.#direction_y = 1;
+    }
+
+    bounce_to_left() {
+        this.#direction_x = -1;
+    }
+
+    bounce_to_right() {
+        this.#direction_x = 1;
     }
 
     draw() { // Affichage dans le canvas

@@ -11,6 +11,7 @@ class Pad {
     up_key;
     down_key;
     direction_y;
+    #score;
 
     constructor(canvas, new_x, new_y, new_speed, new_width, new_height, new_color, new_up_key, new_down_key) {
 
@@ -25,9 +26,10 @@ class Pad {
         this.up_key = new_up_key;
         this.down_key = new_down_key;
         this.direction_y = 0; // Immobile par défaut
+        this.#score = 0;
 
-        window.onkeydown = function(e) {
-
+        //window.onkeydown = function(e) {
+        window.addEventListener("keydown", function(e) {
             //console.log(this); // Par défaut : window (car on est dans un méthode de window). On veut forcer this à continuer à représenter notre Pad. Pour ce faire, on applique la méthode .bind() à cette fonction, nous permettant d'y "forcer" le contexte de "this"
 
             if (e.key == this.up_key) {
@@ -36,11 +38,11 @@ class Pad {
             if (e.key == this.down_key) {
                 this.direction_y = 1;
             }
+        }.bind(this));
+        //}.bind(this);
 
-        }.bind(this);
-
-        window.onkeyup = function(e) {
-
+        //window.onkeyup = function(e) {
+        window.addEventListener("keyup", function(e) {
             if (e.key == this.up_key) {
                 this.direction_y = 0;
             }
@@ -48,7 +50,8 @@ class Pad {
                 this.direction_y = 0;
             }
 
-        }.bind(this);
+        }.bind(this));
+        //}.bind(this);
 
     }
 
@@ -77,6 +80,11 @@ class Pad {
             this.height
         )
 
+    }
+
+    increase_score() {
+        this.#score++;
+        console.log(this.#score);
     }
 
 }

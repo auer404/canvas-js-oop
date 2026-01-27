@@ -35,7 +35,7 @@ setInterval(redraw, 1000 / 60); // 60fps
 function redraw() {
 
     // Vider le canvas (effacer la frame précédente)
-    game.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    game.clear_screen();
 
     game.update(); // mouvements, etc - toutes les mises à jour de propriétés pour game, game.player1, game.player2 et game.ball
 
