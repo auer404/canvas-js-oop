@@ -1,3 +1,8 @@
+/*
+Bugs :
+- Redimensionnement fenêtre -> pas de màj pos_x du Player 2
+*/
+
 class Game {
 
     canvas;
@@ -58,6 +63,19 @@ class Game {
             "ArrowDown" // Touche "bas"
         );
 
+    }
+
+    update() {
+        this.ball.move();
+        this.player1.move();
+        this.player2.move();
+    }
+
+    draw() {
+
+        this.ball.draw();
+        this.player1.draw();
+        this.player2.draw();
     }
 
 }

@@ -26,7 +26,7 @@ window.onresize = resizeCanvas;
 
 ////////////////// GESTION GAME
 
-const game = new Game(canvas);
+const game = new Game(canvas); // ! \ Important : le canvas doit déjà avoir été redimensionné pour que tous les centrages / positionnements soient pris en compte ici.
 
 ////////////////// GESTION ANIMATION
 
@@ -37,8 +37,8 @@ function redraw() {
     // Vider le canvas (effacer la frame précédente)
     game.ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // game.update(); // mouvements, etc - toutes les mises à jour de propriétés pour game, game.player1, game.player2 et game.ball
+    game.update(); // mouvements, etc - toutes les mises à jour de propriétés pour game, game.player1, game.player2 et game.ball
 
-    // game.draw(); // Tout ce que game doit afficher
+    game.draw(); // Tout ce que game doit afficher
 
 }
