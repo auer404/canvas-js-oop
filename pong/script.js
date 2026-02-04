@@ -24,9 +24,12 @@ function resizeCanvas() {
 resizeCanvas();
 window.onresize = resizeCanvas;
 
+const scoreDisplay1 = document.querySelector("#score1");
+const scoreDisplay2 = document.querySelector("#score2");
+
 ////////////////// GESTION GAME
 
-const game = new Game(canvas); // ! \ Important : le canvas doit déjà avoir été redimensionné pour que tous les centrages / positionnements soient pris en compte ici.
+const game = new Game(canvas, scoreDisplay1, scoreDisplay2); // ! \ Important : le canvas doit déjà avoir été redimensionné pour que tous les centrages / positionnements soient pris en compte ici.
 
 ////////////////// GESTION ANIMATION
 

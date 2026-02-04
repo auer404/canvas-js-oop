@@ -6,15 +6,20 @@ Bugs :
 class Game {
 
     canvas;
+    scoreDisplay1;
+    scoreDisplay2;
     ctx;
     player1;
     player2;
     ball;
 
-    constructor(canvas) {
+    constructor(canvas, scoreDisplay1, scoreDisplay2) {
 
         this.canvas = canvas;
         this.ctx = this.canvas.getContext("2d");
+
+        this.scoreDisplay1 = scoreDisplay1;
+        this.scoreDisplay2 = scoreDisplay2;
 
         // Instancier players et balle...
 
@@ -41,6 +46,7 @@ class Game {
 
         this.player1 = new Pad(
             this.canvas,
+            this.scoreDisplay1,
             20, // pos x
             this.canvas.height / 2, // pos y
             10, // vitesse
@@ -53,6 +59,7 @@ class Game {
 
         this.player2 = new Pad(
             this.canvas,
+            this.scoreDisplay2,
             this.canvas.width - 20, // pos x
             this.canvas.height / 2, // pos y
             10, // vitesse

@@ -8,15 +8,34 @@
         body {margin:0}
         canvas {vertical-align:middle;}
 
+        .scoreDisplay {
+            position:absolute;
+            top:30px;
+            font-size:90px;
+            font-family:monospace;
+            transform:translateX(-50%);
+        }
+
+        #score1 {
+            left:25%;
+        }
+
+        #score2 {
+            left:75%;
+        }
+
     </style>
 </head>
 <body>
 
     <canvas></canvas>
 
-    <script src="Ball.js"></script>
-    <script src="Pad.js"></script>
-    <script src="Game.js"></script>
+    <div class="scoreDisplay" id="score1">0</div>
+    <div class="scoreDisplay" id="score2">0</div>
+
+    <script src="Ball.js"  ></script>
+    <script src="Pad.js"   ></script>
+    <script src="Game.js"  ></script>
     <script src="script.js"></script>
     
 </body>

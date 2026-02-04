@@ -1,6 +1,7 @@
 class Pad {
 
     canvas;
+    scoreDisplay;
     ctx;
     position_x;
     position_y;
@@ -13,10 +14,11 @@ class Pad {
     direction_y;
     #score;
 
-    constructor(canvas, new_x, new_y, new_speed, new_width, new_height, new_color, new_up_key, new_down_key) {
+    constructor(canvas, scoreDisplay, new_x, new_y, new_speed, new_width, new_height, new_color, new_up_key, new_down_key) {
 
         this.canvas = canvas;
         this.ctx = this.canvas.getContext("2d");
+        this.scoreDisplay = scoreDisplay;
         this.position_x = new_x;
         this.position_y = new_y;
         this.speed = new_speed;
@@ -84,7 +86,7 @@ class Pad {
 
     increase_score() {
         this.#score++;
-        console.log(this.#score);
+        this.scoreDisplay.textContent = this.#score;
     }
 
 }
